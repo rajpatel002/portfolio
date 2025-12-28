@@ -500,26 +500,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ===== ANDROID SAFE GEAR START =====
 
-let gearsStarted = false;
-
-function startGears() {
-    if (gearsStarted) return;
-    gearsStarted = true;
-    requestAnimationFrame(animateGears);
-}
-
-// Start after full page load (desktop)
-window.addEventListener("load", startGears);
-
-// Start on first user interaction (Android fix)
-["touchstart", "scroll", "click"].forEach(event => {
-    window.addEventListener(event, startGears, { once: true });
-});
-
 // Start when tab becomes visible (Android fix)
 document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
         startGears();
     }
 });
+
+// ===== FINAL, STABLE GEAR START (DESKTOP + ANDROID) =====
+
+function startGearsOnce() {
+    requestAnimationFrame(animateGears);
+}
+
+// Start animation after DOM is ready (works on desktop + Android)
+document.addEventListener("DOMContentLoaded", startGearsOnce);
 
