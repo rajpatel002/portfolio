@@ -1,6 +1,10 @@
 // ============================================
 // NAVIGATION FUNCTIONALITY
 // ============================================
+// Prevent mobile auto-scroll on load
+window.addEventListener("load", () => {
+    window.scrollTo(0, 0);
+});
 
 // Mobile menu toggle
 const hamburger = document.querySelector('.hamburger');
