@@ -1,6 +1,16 @@
 /* ============================================
    GLOBAL STYLES & RESET
    ============================================ */
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    overscroll-behavior: none;
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -44,7 +54,7 @@ body {
 
 body::before {
     content: '';
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -437,8 +447,8 @@ section {
 }
 
 .scroll-indicator {
-    position: absolute;
-    bottom: 30px;
+    position: fixed;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
