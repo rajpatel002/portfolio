@@ -1,6 +1,15 @@
 // ============================================
 // NAVIGATION FUNCTIONALITY
 // ============================================
+
+
+// Prevent browser from auto-restoring scroll position
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+
+
 // ✅ Android scroll-fix (safe & reversible)
 document.body.style.overflow = "hidden";
 
@@ -88,19 +97,20 @@ window.addEventListener('load', updateActiveNav);
 // SMOOTH SCROLL
 // ============================================
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+// Safe navigation scroll (no auto-scroll bug)
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', e => {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offsetTop = target.offsetTop - 80;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
+
+        const targetId = link.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (!target) return;
+
+        const y = target.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top: y, behavior: 'smooth' });
     });
 });
+
 
 // ============================================
 // HERO STATS ANIMATION
