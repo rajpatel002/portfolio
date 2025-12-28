@@ -97,24 +97,34 @@ function updateActiveNav() {
 const throttledUpdateNav = throttle(updateActiveNav, 100);
 
 // Use passive event listener for better scroll performance
-window.addEventListener('scroll', throttledUpdateNav, { passive: true });
+let isAutoScrolling = false;
+
+window.addEventListener('scroll', () => {
+    if (!isAutoScrolling) {
+        throttledUpdateNav();
+    }
+}, { passive: true });
+
 window.addEventListener('load', updateActiveNav);
 
 // ============================================
 // SMOOTH SCROLL
 // ============================================
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+// Smooth scroll ONLY for navbar links (prevents auto-scroll bug)
+document.querySelectorAll('.nav-link[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offsetTop = target.offsetTop - 80;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
+
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (!target) return;
+
+        const offsetTop = target.offsetTop - 80;
+        window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+        });
     });
 });
 
