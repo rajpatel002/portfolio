@@ -474,13 +474,6 @@ function init() {
 
 // ===== FINAL, STABLE GEAR START (DESKTOP + ANDROID) =====
 
-function init() {
-    updateActiveNav();
-
-    requestAnimationFrame(() => {
-        document.body.style.opacity = '1';
-    });
-}
 
 // ============================================
 // GEAR MECHANICAL ROTATION (FINAL & WORKING)
