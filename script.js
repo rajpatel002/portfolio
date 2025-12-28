@@ -10,17 +10,6 @@ if ('scrollRestoration' in history) {
 
 
 
-// ✅ Android scroll-fix (safe & reversible)
-document.body.style.overflow = "hidden";
-
-window.addEventListener("load", () => {
-    // unlock scroll after page is stable
-    document.body.style.overflow = "";
-
-    // force final position at top (Android-safe)
-    window.scrollTo(0, 0);
-});
-
 
 // Mobile menu toggle
 const hamburger = document.querySelector('.hamburger');
