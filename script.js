@@ -1,6 +1,13 @@
 // ============================================
 // NAVIGATION FUNCTIONALITY
 // ============================================
+
+// Remove hash to prevent Android auto-scroll
+if (window.location.hash) {
+    history.replaceState(null, "", window.location.pathname);
+}
+
+
 // 🔒 Prevent Android auto-scroll on load
 window.addEventListener("load", () => {
     setTimeout(() => {
@@ -517,3 +524,23 @@ document.addEventListener("DOMContentLoaded", () => {
     animateGears();
 });
 
+
+// ✅ Android-safe manual scrolling (no hash)
+document.querySelectorAll("[data-scroll]").forEach(link => {
+    link.addEventListener("click", e => {
+        e.preventDefault();
+
+        const targetId = link.getAttribute("data-scroll");
+        const target = document.getElementById(targetId);
+
+        if (!target) return;
+
+        const yOffset = -80; // navbar height
+        const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+        window.scrollTo({
+            top: y,
+            behavior: "smooth"
+        });
+    });
+});
