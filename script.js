@@ -523,29 +523,31 @@ window.addEventListener("load", () => {
 // Scroll Spy - Active Nav Link
 // ==============================
 
-const sections = document.querySelectorAll("section[id]");
+// =====================================
+// Scroll Spy for Active Navbar Link
+// =====================================
+
 const navLinks = document.querySelectorAll(".nav-link");
+const sections = document.querySelectorAll("section");
 
-const observer = new IntersectionObserver(
-    (entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.getAttribute("id");
+function updateActiveNav() {
+    let currentId = "";
 
-                navLinks.forEach(link => {
-                    link.classList.remove("active");
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.scrollY >= sectionTop - 100) {
+            currentId = section.getAttribute("id");
+        }
+    });
 
-                    if (link.getAttribute("href") === `#${id}`) {
-                        link.classList.add("active");
-                    }
-                });
-            }
-        });
-    },
-    {
-        root: null,
-        threshold: 0.6, // 60% section visible
-    }
-);
+    navLinks.forEach(link => {
+        link.classList.remove("active");
 
-sections.forEach(section => observer.observe(section));
+        if (link.getAttribute("href") === `#${currentId}`) {
+            link.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", updateActiveNav);
+window.addEventListener("load", updateActiveNav);
