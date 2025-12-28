@@ -1,14 +1,6 @@
 /* ============================================
    GLOBAL STYLES & RESET
    ============================================ */
-/* 🔒 Lock scroll during load (Android fix) */
-html.loading,
-html.loading body {
-    overflow: hidden;
-    position: fixed:
-    height: 100%;
-}
-
 
 
 * {
