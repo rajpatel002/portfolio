@@ -34,10 +34,12 @@ const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
 if (hamburger) {
-    hamburger.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        hamburger.classList.toggle('active');
-    });
+    hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+    document.body.style.overflow = navMenu.classList.contains("active")
+        ? "hidden"
+        : "";
+});
 }
 
 // Close mobile menu when clicking on a link
