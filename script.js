@@ -514,6 +514,16 @@ document.addEventListener("DOMContentLoaded", () => {
         requestAnimationFrame(animateGears);
     }
 
-    animateGears();
+    window.addEventListener("load", () => {
+    setTimeout(() => {
+        // unlock scroll
+        document.documentElement.classList.remove("loading");
+        window.scrollTo(0, 0);
+
+        // start gear animation AFTER page is stable
+        requestAnimationFrame(animateGears);
+    }, 100);
+});
+
 });
 
