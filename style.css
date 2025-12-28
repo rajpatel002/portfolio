@@ -38,6 +38,13 @@ html.loading body {
     --container-max-width: 1200px;
 }
 
+html, body {
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
 
 
 body {
