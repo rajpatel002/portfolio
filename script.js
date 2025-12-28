@@ -467,6 +467,25 @@ function init() {
 // === GEAR MECHANICAL ROTATION (REALISTIC) ===
 
 // wait until DOM is fully loaded
+// ===== ANDROID SAFE GEAR START =====
+
+// Start when tab becomes visible (Android fix)
+
+
+// ===== FINAL, STABLE GEAR START (DESKTOP + ANDROID) =====
+
+function init() {
+    updateActiveNav();
+
+    requestAnimationFrame(() => {
+        document.body.style.opacity = '1';
+    });
+}
+
+// ============================================
+// GEAR MECHANICAL ROTATION (FINAL & WORKING)
+// ============================================
+
 document.addEventListener("DOMContentLoaded", () => {
     const driver = document.querySelector(".gear-driver");
     const driven = document.querySelector(".gear-driven");
@@ -477,38 +496,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     let angle = 0;
-    const ratio = 12 / 10; // driver teeth / driven teeth
+    const ratio = 12 / 10;
+    const speed = 1.4; // change speed here
 
     function animateGears() {
-        angle += 2.2; // rotation speed (adjust if needed)
+        angle += speed;
 
         driver.setAttribute(
             "transform",
-            `translate(150 99) rotate(${angle})`
+            `rotate(${angle} 150 100)`
         );
 
         driven.setAttribute(
             "transform",
-            `translate(295 100) rotate(${-angle * ratio})`
+            `rotate(${-angle * ratio} 304 100)`
         );
 
-        
+        requestAnimationFrame(animateGears);
     }
 
-
-});
-
-// ===== ANDROID SAFE GEAR START =====
-
-// Start when tab becomes visible (Android fix)
-
-
-// ===== FINAL, STABLE GEAR START (DESKTOP + ANDROID) =====
-
-function startGearsOnce() {
     requestAnimationFrame(animateGears);
-}
-
-// Start animation after DOM is ready (works on desktop + Android)
-document.addEventListener("DOMContentLoaded", startGearsOnce);
+});
 
