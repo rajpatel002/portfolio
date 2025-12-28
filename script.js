@@ -515,3 +515,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+window.addEventListener("load", () => {
+    document.documentElement.classList.remove("loading");
+});
