@@ -159,11 +159,11 @@ body::before {
 .nav-link::after {
     content: '';
     position: absolute;
-    bottom: -5px;
     left: 0;
+    bottom: -6px;
     width: 0;
     height: 2px;
-    background: var(--accent-red);
+    background: #ff0033;
     transition: width 0.3s ease;
 }
 
