@@ -1,24 +1,15 @@
 // ============================================
 // NAVIGATION FUNCTIONALITY
 // ============================================
-// 🔒 Prevent Android auto-scroll on load
+// ✅ Android scroll-fix (safe & reversible)
+document.body.style.overflow = "hidden";
+
 window.addEventListener("load", () => {
-    setTimeout(() => {
-        window.scrollTo(0, 0);
-    }, 0);
-});
+    // unlock scroll after page is stable
+    document.body.style.overflow = "";
 
-
-// 🚫 Android auto-scroll FIX — remove URL hash immediately
-if (window.location.hash) {
-    history.replaceState(null, "", window.location.pathname);
-}
-
-// Lock scroll position on load (Android-safe)
-window.addEventListener("load", () => {
-    requestAnimationFrame(() => {
-        window.scrollTo(0, 0);
-    });
+    // force final position at top (Android-safe)
+    window.scrollTo(0, 0);
 });
 
 
