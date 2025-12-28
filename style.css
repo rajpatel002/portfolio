@@ -76,6 +76,7 @@ body::before {
    NAVIGATION
    ============================================ */
 .navbar {
+    height: 70px;
     position: fixed;
     top: 0;
     width: 100%;
@@ -197,10 +198,19 @@ body::before {
 }
 
 /* ============================================
+   SCROLL OFFSET FIX FOR FIXED NAVBAR (MOBILE + DESKTOP)
+   ============================================ */
+
+section {
+    scroll-margin-top: 90px; /* navbar height + spacing */
+}
+
+
+/* ============================================
    HERO SECTION
    ============================================ */
 .hero {
-    min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     align-items: center;
     justify-content: center;
