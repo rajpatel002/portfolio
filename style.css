@@ -471,6 +471,11 @@ body::before {
 /* ============================================
    SECTION HEADERS
    ============================================ */
+
+section {
+    scroll-margin-top: 90px;
+}
+
 .section-header {
     display: flex;
     align-items: center;
