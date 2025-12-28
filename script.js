@@ -1,6 +1,13 @@
 // ============================================
 // NAVIGATION FUNCTIONALITY
 // ============================================
+
+// 🔒 Stop browser from restoring scroll position (Android auto-scroll fix)
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+
 // 🔒 Prevent Android auto-scroll on load
 window.addEventListener("load", () => {
     setTimeout(() => {
