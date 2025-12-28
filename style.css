@@ -1278,7 +1278,7 @@ body::before {
 
 .contact-value {
     font-size: 16px;
-    color: var(--text-primary);
+    color: #e6f1ff;
     font-weight: 500;
 }
 
