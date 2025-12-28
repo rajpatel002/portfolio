@@ -8,6 +8,20 @@ window.addEventListener("load", () => {
     }, 0);
 });
 
+
+// 🚫 Android auto-scroll FIX — remove URL hash immediately
+if (window.location.hash) {
+    history.replaceState(null, "", window.location.pathname);
+}
+
+// Lock scroll position on load (Android-safe)
+window.addEventListener("load", () => {
+    requestAnimationFrame(() => {
+        window.scrollTo(0, 0);
+    });
+});
+
+
 // Mobile menu toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
