@@ -506,15 +506,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     window.addEventListener("load", () => {
-    setTimeout(() => {
-        // unlock scroll
-        document.documentElement.classList.remove("loading");
+        document.body.style.overflow = "";
         window.scrollTo(0, 0);
 
-        // start gear animation AFTER page is stable
         requestAnimationFrame(animateGears);
-    }, 100);
 });
+
 
 });
 
