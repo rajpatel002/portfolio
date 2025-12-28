@@ -501,11 +501,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // ===== ANDROID SAFE GEAR START =====
 
 // Start when tab becomes visible (Android fix)
-document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "visible") {
-        startGears();
-    }
-});
+
 
 // ===== FINAL, STABLE GEAR START (DESKTOP + ANDROID) =====
 
