@@ -5,6 +5,7 @@
 html.loading,
 html.loading body {
     overflow: hidden;
+    position: fixed:
     height: 100%;
 }
 
