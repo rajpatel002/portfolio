@@ -518,3 +518,34 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("load", () => {
     document.documentElement.classList.remove("loading");
 });
+
+// ==============================
+// Scroll Spy - Active Nav Link
+// ==============================
+
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav-link");
+
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute("id");
+
+                navLinks.forEach(link => {
+                    link.classList.remove("active");
+
+                    if (link.getAttribute("href") === `#${id}`) {
+                        link.classList.add("active");
+                    }
+                });
+            }
+        });
+    },
+    {
+        root: null,
+        threshold: 0.6, // 60% section visible
+    }
+);
+
+sections.forEach(section => observer.observe(section));
