@@ -1278,9 +1278,15 @@ body::before {
 
 .contact-value {
     font-size: 16px;
-    color: #e6f1ff;
+    color: #ffffff;
     font-weight: 500;
 }
+
+.contact-value a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
 
 .console-footer {
     padding: 30px;
