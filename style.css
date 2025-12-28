@@ -1288,6 +1288,11 @@ body::before {
     margin-bottom: 5px;
 }
 
+.contact-value a{
+   color: #FFFFFF;
+   text-decoration: underline;
+}
+
 .contact-value {
     font-size: 16px;
     color: var(--text-primary);
