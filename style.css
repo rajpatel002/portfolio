@@ -48,6 +48,7 @@ html, body {
 
 
 body {
+    padding-top: 80px; /* height of navbar */
     font-family: var(--font-body);
     background: var(--primary-bg);
     color: var(--text-primary);
@@ -90,7 +91,7 @@ body::before {
    NAVIGATION
    ============================================ */
 .navbar {
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100%;
     background: rgba(10, 10, 10, 0.8);
