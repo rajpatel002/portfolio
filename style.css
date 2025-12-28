@@ -90,7 +90,7 @@ body::before {
    NAVIGATION
    ============================================ */
 .navbar {
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100%;
     background: rgba(10, 10, 10, 0.8);
